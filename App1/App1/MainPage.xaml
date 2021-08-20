@@ -3,30 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App1.MainPage">
 
-   <StackLayout>
-      <Label Text="Tone Types"
-             BackgroundColor="DodgerBlue"
-             TextColor="White"
-             FontAttributes="Bold"
-             FontSize="Large"
-             Padding="5" />
-      <ListView x:Name="lst_ToneTypes">
-         <ListView.ItemTemplate>
-            <DataTemplate>
-               <ViewCell>
-                  <Grid>
-                     <Label Text="{Binding}" FontSize="Small" FontAttributes="Bold" Padding="10" VerticalOptions="CenterAndExpand"/>
-                  </Grid>
-               </ViewCell>
-            </DataTemplate>
-         </ListView.ItemTemplate>
-      </ListView>
-      <!--<Entry x:Name="entryDuration"
-             Text="5000" />
-      <Button Text="Start Tone"
-              Clicked="StartTone_Clicked" />-->
-      <Button Text="Stop Tone"
-              Clicked="StopTone_Clicked" />
-   </StackLayout>
+   <ContentPage.Content>
+      <StackLayout>
+         <Button Text="Tone Types" Clicked="ToneTypes_Clicked"/>
+         <Button Text="WebView"
+                 Clicked="WebView_Clicked" />
+      </StackLayout>
+   </ContentPage.Content>
 
 </ContentPage>

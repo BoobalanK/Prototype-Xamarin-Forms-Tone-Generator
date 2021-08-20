@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App1.Views;
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,48 +14,19 @@ namespace App1
 {
     public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
-        IToneService _toneService;
-        private ObservableCollection<string> _toneTypes; 
-        private int durationiNMs = 5000;
-
-        public ObservableCollection<string> ToneTypes
-        {
-            get { return _toneTypes; }
-            set
-            {
-                if (_toneTypes != value)
-                {
-                    _toneTypes = value;
-
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ToneTypes)));
-                }
-            }
-        }
-        public new event PropertyChangedEventHandler PropertyChanged;
         public MainPage()
         {
             InitializeComponent();
-            _toneService = DependencyService.Get<IToneService>();
-            var toneTypes = _toneService.GetToneTypes();
-            ToneTypes = new ObservableCollection<string>(toneTypes);
-            lst_ToneTypes.ItemsSource = ToneTypes;
-            lst_ToneTypes.ItemSelected += Lst_ToneTypes_ItemSelected;
         }
 
-        private void Lst_ToneTypes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void ToneTypes_Clicked(object sender, EventArgs e)
         {
-            _toneService.StartTone(e.SelectedItem.ToString());
+            Navigation.PushAsync(new ToneTypesPage());
+        }
+        private void WebView_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new WebViewPage());
         }
 
-        private void StartTone_Clicked(object sender, EventArgs e)
-        {
-            //int.TryParse(entryDuration.Text, out durationiNMs);
-            _toneService.StartTone(durationiNMs);
-        }
-
-        private void StopTone_Clicked(object sender, EventArgs e)
-        {
-            _toneService.StopTone();
-        }
     }
 }
