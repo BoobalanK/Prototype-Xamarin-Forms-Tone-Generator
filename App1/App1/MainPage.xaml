@@ -8,6 +8,11 @@
          <Button Text="Tone Types" Clicked="ToneTypes_Clicked"/>
          <Button Text="WebView"
                  Clicked="WebView_Clicked" />
+         <Label Text="Android Service" BackgroundColor="DodgerBlue" FontSize="Medium" TextColor="White"/>
+         <Button Text="Start Service"
+                 Clicked="StartServiceClicked" />
+         <Button Text="Stop Service"
+                 Clicked="StopServiceClicked" />
       </StackLayout>
    </ContentPage.Content>
 

@@ -28,5 +28,16 @@ namespace App1
             Navigation.PushAsync(new WebViewPage());
         }
 
+        private void StartServiceClicked(object sender, EventArgs e)
+        {
+            var serviceController = DependencyService.Get<IAndroidServiceController>();
+            serviceController.StartService();
+        }
+
+        private void StopServiceClicked(object sender, EventArgs e)
+        {
+            var serviceController = DependencyService.Get<IAndroidServiceController>();
+            serviceController.StopService();
+        }
     }
 }
